@@ -4,10 +4,38 @@
 
     $conDB = conectaDB::criarConexao();
 
-   // $errors = array("nome" => "mensagem", "email" => "mes", "telefone" => "mes");
     $errors = array();
 
     $errors_json = array();
+
+    if (isset($_POST['email_contato']) && isset($_POST['verifica_email'])) {
+
+
+        $email_contato = mysqli_real_escape_string($conDB, $_POST['email_contato']);
+                  
+        if(empty($email_contato)){
+            $errors['email'] ="Por favor preencha o campo de email!";    
+            $errors['size'] = count($errors);    
+        }
+        $result = $conDB->query("SELECT * from contato where email='$email_contato'");  
+
+        if($result->num_rows==0){
+            $errors['usuario'] ="Você não possui um e-mail cadastrado!";    
+            $errors['size'] = count($errors);    
+        }
+
+        $errors['size']=count($errors);
+        
+       if($errors['size']==0 && $result->num_rows==1){                
+           
+                    echo $errors['size'];
+          
+        }else{              
+                echo json_encode($errors);
+            }
+         
+                  
+    }
 
 
     if (isset($_POST['salva_contato'])) {
@@ -60,6 +88,8 @@
     
         
     }
+    
+   
 
 
 

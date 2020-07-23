@@ -12,6 +12,9 @@
 	<link href='https://fonts.googleapis.com/css?family=Niconne' rel='stylesheet'>
 	<script src="js/main.js"></script>
 </head>
+ 
+
+
 <body>
 
 <div id="grid" class="grid-container">
@@ -23,8 +26,9 @@
 </div>
 
 <div id="texto">
-<p id="msg2">Digite seus dados abaixo abaixo, para que possamos entrar em contato e lhe fornecer mais informações.
-	Você será redirecionado para nossa calculadora de óleos essenciais. </p>
+<p id="msg2">Digite seus dados abaixo abaixo, para que possamos entrar em contato e lhe fornecer mais informações sobre nossos serviços.
+	Se você já possui um email cadastrado basta <a href="" onclick="veriEmail()">clicar aqui</a> para digitar seu email.</p>
+	<p> 
 
 </div>
 <div id="msg" class="modal-style">
@@ -45,22 +49,29 @@
 					
 		</div>
 		<div class="container_btn" style="margin-top: -15px;">
-				<input id="btncalc" onclick="calculaGotas()" type="button" value="Calcular">
+				<input class="btn" id="btncalc" onclick="calculaGotas()" type="button" value="Calcular">
 		</div>
-</div>
+		
 
+
+</div>
+<div id="water-drop" class="drop" style="display:none; grid-area: form;padding-top: 20px;">
+ 
+		</div>
 <div class="grid-form">
 	<form id="contato-form" class="grid-form" action="src/contato_ctrl.php" name="contato_form" method="POST">
-			<div class="group">      
+			<div id="form_1" class="group">      
 				<input name="nome_contato" type="text" required>
 				<span class="highlight"></span>
 				<span class="bar"></span>
 				<label>Nome</label>
-				<span style="display:none" class="error_message" id="nome_error"></span>
+				<div style="display:flex">
+					<span style="opacity:0" class="error_message" id="nome_error"></span>
 				</div>
+			</div>
 				
-				<div class="group">      
-				<input name="email_contato" type="text" required>
+				<div id="form_2" class="group">      
+				<input id="email" name="email_contato" type="text" required>
 				<span class="highlight"></span>
 				<span class="bar"></span>
 				<label>Email</label>
@@ -68,7 +79,7 @@
 				</div>
 
 					
-				<div class="group">      
+				<div id="form_3"class="group">      
 				<input name="telefone_contato" type="text" required>
 				<span class="highlight"></span>
 				<span class="bar"></span>
@@ -77,9 +88,9 @@
 				</div>
 
 				<div class="container_btn" style="margin-top: -15px;">
-				<input id="btn_enviar" onclick="inserirContato()" type="submit" value="Enviar">
+				<input class="btn" id="btn_enviar" onclick="inserirContato()" type="submit" value="Enviar">
+				<input class="btn" id="btn_verifica" onclick="consultaEmail()" style="display: none" type="submit" name="verifica_email" value="Consultar">
 				</div>
-
 				<input type="hidden" name="salva_contato">
 		</form>
 </div>
