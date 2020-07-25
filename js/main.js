@@ -5,10 +5,10 @@ function veriEmail(){
     document.getElementById("form_3").style.display = "none";
     document.getElementById("btn_enviar").style.display = "none";
     document.getElementById("btn_verifica").style.display = "block";
+    
 }
 
 function consultaEmail(){
-
         var r = document.getElementById("email");      
         event.preventDefault();   
         //Retirar após debug
@@ -23,15 +23,7 @@ function consultaEmail(){
                  errors = JSON.parse(this.responseText);
                 //Retirar após debug
                 console.log(errors);
-                if(errors==0){
-                    document.getElementById("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
-                    
-                    document.getElementById("contato-form").style.display = "none";
-                    document.getElementById("msg").style.display = "block";	
-
-                    document.getElementById("num1").value="";
-                    document.getElementById("num2").value="";
-                }
+                abreCalculadora(errors);
                 console.log(this.responseText);
         
                 if(errors["email"]){
@@ -40,15 +32,12 @@ function consultaEmail(){
                     x.style.display = "block";
             }
 
-            if(errors["usuario"]){
-                alert(errors['usuario']);
-            }
-           
-    
-            
+                if(errors["usuario"]){
+                     alert(errors['usuario']);
+                }           
         }
        
-        }
+     }
 
 
     }
@@ -63,14 +52,19 @@ function calculaGotas(){
             var x = document.getElementById("ml_error");
             x.textContent = "Valor deve ser maior que 0!"
             x.style.display = "block";
-       }    
-       if(parseFloat(input_perc.value)==0 || input_ml.value==""){
+       } else{
+             document.getElementById("ml_error").style.display="none";
+       }
+       if(parseFloat(input_perc.value)==0 || input_perc.value==""){
             var x = document.getElementById("perc_error");
             x.textContent = "Valor deve ser maior que 0!"
             x.style.display = "block";
+       }else{
+        document.getElementById("perc_error").style.display="none";
        }
 
        if(parseFloat(input_ml.value)>0 && parseFloat(input_perc.value)>0){
+            
             var perc_valor = parseFloat(input_perc.value/100);
           
             var gotas = Math.round(parseFloat((parseFloat(input_ml.value)*perc_valor*0.25)*100));
@@ -105,9 +99,7 @@ function calculaGotas(){
 
 
             result.innerHTML = gotas + " gotas";
-     
-
-             
+                
        }
 
 
@@ -181,16 +173,8 @@ function inserirContato(){
                 var errors;
                 errors = JSON.parse(this.responseText);
                 //Retirar após debug
-                console.log(errors);
-                if(errors==-1){
-                    document.getElementById("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
-                    
-                    document.getElementById("contato-form").style.display = "none";
-                    document.getElementById("msg").style.display = "block";	
-
-                    document.getElementById("num1").value="";
-                    document.getElementById("num2").value="";
-                }
+                console.log(errors);              
+                    abreCalculadora(errors);               
                 //Verificar uma forma melhor de fazer essa validação utilizando O JSON
                 if(errors["nome"]){
                     var s = document.getElementById("nome_error");
@@ -208,15 +192,28 @@ function inserirContato(){
                     u.style.display = "block";
                 }
 
-                if(errors["usuario"]){
+                 if(errors["usuario"]){
                     alert(errors['usuario']);
                 }
                
         }   
-    form2.reset();   
+    //form2.reset();   
     }
     document.getElementById("nome_error").style.opacity = "0";
     document.getElementById("email_error").style.display = "none";
     document.getElementById("telefone_error").style.display = "none";
 }
 
+abreCalculadora = (e) => {
+      if(e==-1) { 
+            document.getElementById("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
+                            
+            document.getElementById("contato-form").style.display = "none";
+            document.getElementById("msg").style.display = "block";	
+
+            document.getElementById("num1").value=''
+            document.getElementById("num2").value='';
+            
+      }
+
+}

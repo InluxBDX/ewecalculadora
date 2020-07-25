@@ -36,7 +36,18 @@ input               {
   border:none;
   border-bottom:1px solid #757575;
 }
-input:focus         { outline:none; }
+
+input[type=number]:required{
+
+    border-color:black;
+
+
+}
+
+
+input:focus         { 
+  outline:none; 
+}
 
 /* LABEL ======================================= */
 label                {
@@ -265,6 +276,8 @@ input:focus ~ label, input:valid ~ label {
   margin-bottom: -25px;
      
 }
+
+
 
 #logo img {
   width: 220px;

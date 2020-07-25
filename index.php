@@ -19,7 +19,7 @@
 
 <div id="grid" class="grid-container">
 	<div id="logo"> 
-		<img src="images/logo.jpeg" alt="">
+		<a href="index.php"><img src="images/logo.jpeg" alt=""></a>
 		<div id="nome_empresa">
 			<p>Ewé Terapias</p>
 	</div>

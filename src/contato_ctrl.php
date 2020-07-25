@@ -13,20 +13,20 @@
 
         $email_contato = mysqli_real_escape_string($conDB, $_POST['email_contato']);
                   
+        
+        $result = $conDB->query("SELECT * from contato where email='$email_contato'");  
+       
         if(empty($email_contato)){
             $errors['email'] ="Por favor preencha o campo de email!";    
             $errors['size'] = count($errors);    
-        }
-        $result = $conDB->query("SELECT * from contato where email='$email_contato'");  
-
-        if($result->num_rows==0){
+        }else if($result->num_rows==0){
             $errors['usuario'] ="Você não possui um e-mail cadastrado!";    
             $errors['size'] = count($errors);    
         }
 
-        $errors['size']=count($errors);
+       $errors['size']=count($errors)-1;
         
-       if($errors['size']==0 && $result->num_rows==1){                
+       if($errors['size']==-1 && $result->num_rows==1){                
            
                     echo $errors['size'];
           
