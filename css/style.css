@@ -233,7 +233,7 @@ input:focus ~ label, input:valid ~ label {
 	
   }
 
-@-webkit-keyframes drop {
+@keyframes drop {
   0%{
     transform:scale(0.1,0.1) rotate(45deg);
     
