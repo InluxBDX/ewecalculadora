@@ -1,14 +1,22 @@
 
 function veriEmail(){
     event.preventDefault();
+    document.getElementById("email_error").style.display = "none";
     document.getElementById("form_1").style.display = "none";
     document.getElementById("form_3").style.display = "none";
     document.getElementById("btn_enviar").style.display = "none";
     document.getElementById("btn_verifica").style.display = "block";
-    
 }
 
-function consultaEmail(){
+function habilitaFormCad(event){
+    event.preventDefault();
+    document.getElementById("form_1").style.display = "block";
+    document.getElementById("form_3").style.display = "block";
+    document.getElementById("btn_enviar").style.display = "block";
+    document.getElementById("btn_verifica").style.display = "none";
+}
+
+function consultaEmail(event){
         var r = document.getElementById("email");      
         event.preventDefault();   
         //Retirar após debug
@@ -33,7 +41,10 @@ function consultaEmail(){
             }
 
                 if(errors["usuario"]){
-                     alert(errors['usuario']);
+                     alert(errors['usuario'] + 
+                     " Você será redirecionado para a página de cadastro");
+                     habilitaFormCad(event)
+                     inserirContato(event);
                 }           
         }
        
@@ -41,6 +52,8 @@ function consultaEmail(){
 
 
     }
+
+
 
 
 function calculaGotas(){ 
@@ -64,44 +77,47 @@ function calculaGotas(){
        }
 
        if(parseFloat(input_ml.value)>0 && parseFloat(input_perc.value)>0){
-            
-            var perc_valor = parseFloat(input_perc.value/100);
-          
-            var gotas = Math.round(parseFloat((parseFloat(input_ml.value)*perc_valor*0.25)*100));
-        
-            document.getElementById("msg").style.display = "none";
 
-            document.getElementById("water-drop").style.display = "block";
-            var result = document.createElement("span");
+                var result_container = document.createElement("div");
+                var btn_container = document.createElement("div");
+                var btn_reset = document.createElement("input");
+                var perc_valor = parseFloat(input_perc.value/100);
 
-            var result_container = document.createElement("div");
-            var btn_container = document.createElement("div");
-            var btn_reset = document.createElement("input");
-            document.getElementById("grid").appendChild(result_container);
-            result_container.setAttribute("id", "result");
-            result_container.setAttribute("class", "gotas");
-            btn_container.setAttribute("class", "container_btn");
-            btn_reset.setAttribute("class", "btn");
-            btn_reset.setAttribute("id", "reset");
-            btn_reset.setAttribute("type", "button");
-            btn_reset.setAttribute("value", "Novo Cálculo");
-            result_container.appendChild(result);
-            result_container.appendChild(btn_container);
-            btn_container.appendChild(btn_reset);
-            result.setAttribute("style", "top: -25px; position: relative;")
+                var gotas = Math.round(parseFloat((parseFloat(input_ml.value)*perc_valor*0.25)*100));
 
-            btn_container.setAttribute("style", "position: relative;top: 50px;")
-            
+                document.getElementById("msg").style.display = "none";
 
-          
-            document.getElementById("msg2").innerHTML="Para os valores especificados, você deverá diluir "
-            + "<b>" + gotas +"</b>" + " gotas em seu óleo essencial.";
+                document.getElementById("water-drop").style.display = "block";
+                var result = document.createElement("span");
+
+                document.getElementById("grid").appendChild(result_container);
+                result_container.setAttribute("id", "result");
+                result_container.setAttribute("class", "gotas");
+                btn_container.setAttribute("class", "container_btn");
+                btn_reset.setAttribute("class", "btn");
+                btn_reset.setAttribute("id", "reset");
+                btn_reset.setAttribute("type", "button");
+                btn_reset.setAttribute("value", "Novo Cálculo");
+                btn_reset.setAttribute("onclick", "novoCalculo()");
+                result_container.appendChild(result);
+                result_container.appendChild(btn_container);
+                btn_container.appendChild(btn_reset);
+                result.setAttribute("style", "top: -25px; position: relative;")
+
+                btn_container.setAttribute("style", "position: relative;top: 50px;")
+
+                //btn_reset.addEventListener("click", novoCalculo());
+
+                document.getElementById("msg2").innerHTML="Para os valores especificados, você deverá diluir "
+                + "<b>" + gotas +"</b>" + " gotas em seu óleo essencial.";
 
 
-            result.innerHTML = gotas + " gotas";
-                
-       }
+                result.innerHTML = gotas + " gotas";
 
+                    
+                            
+                }
+      
 
    };
    
@@ -156,9 +172,7 @@ function validaCampos(form){
     }
 
 }*/
-
-
-function inserirContato(){
+function inserirContato(event){
     var form2 = document.getElementById("contato-form");     
         event.preventDefault();  
         var s = serialize(form2);
@@ -193,7 +207,8 @@ function inserirContato(){
                 }
 
                  if(errors["usuario"]){
-                    alert(errors['usuario']);
+                     alert(errors["usuario"] + " Você será redirecionado para a calculadora");
+                     consultaEmail(event);
                 }
                
         }   
@@ -215,5 +230,21 @@ abreCalculadora = (e) => {
             document.getElementById("num2").value='';
             
       }
+};
 
+
+novoCalculo = () => {  
+          
+          document.getElementById("water-drop").style.display = "none";
+          document.getElementById("result").remove();
+          
+
+          document.getElementById("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
+                          
+          document.getElementById("contato-form").style.display = "none";
+          document.getElementById("msg").style.display = "block";	
+
+          document.getElementById("num1").value=''
+          document.getElementById("num2").value='';
+        
 }
