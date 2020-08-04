@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,20 +45,17 @@
 <a href="https://t.me/ewe_terapias" target="_blank"><svg class="logo_social" viewBox="1 -35 511.99993 511" width="60.734px" height="60.733px">
 <path d="m121.453125 253.171875 63.554687 158.886719 82.75-82.753906 141.535157 112.503906 102.707031-441.308594-512 205.480469zm-39.933594-47.640625 244.046875-97.945312-194.074218 117.363281zm287.535157-89.25-161.980469 148.1875-19.484375 73.425781-36.035156-90.085937zm-149.851563 219.230469 9.816406-36.996094 15.144531 12.035156zm171.65625 53.394531-147.386719-117.152344 221.902344-203.007812zm0 0"/>
 </svg>
-</a>
-			
-	
-			
+</a>	
 </div>
 
 
 <div id="texto">
-<p id="msg2">Digite seus dados abaixo abaixo, para que possamos entrar em contato e lhe fornecer mais informações sobre nossos serviços.
+<p id="msg2">Digite seus dados abaixo, para que possamos entrar em contato e lhe fornecer mais informações sobre nossos serviços.
 	Se você já possui um email cadastrado basta <a href="" onclick="veriEmail()">clicar aqui</a> para digitar seu email.</p>
-	<p> 
+<p> 
 
 </div>
-<div id="msg" class="modal-style">
+<div id="msg" class="calc-style">
 		<div class="group">      
 				<input id="num1" name="ml_value" type="number" value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  >
 				<span class="highlight"></span>
@@ -83,39 +79,39 @@
 <div id="water-drop" class="drop" style="display:none; grid-area: form;padding-top: 20px;">
  
 		</div>
+
+
+
+
 <div class="grid-form">
 	<form id="contato-form" class="grid-form" action="src/contato_ctrl.php" name="contato_form" method="POST">
 			<div id="form_1" class="group">      
 				<input name="nome_contato" type="text" required>
 				<span class="highlight"></span>
 				<span class="bar"></span>
-				<label>Nome</label>
-				<div style="display:flex">
-					<span style="opacity:0" class="error_message" id="nome_error"></span>
-				</div>
-			</div>
+				<label>Nome</label>				
+				<span style="opacity:0" class="error_message" id="nome_error"></span>
 				
-				<div id="form_2" class="group">      
-				<input id="email" name="email_contato" type="text" required>
-				<span class="highlight"></span>
-				<span class="bar"></span>
-				<label>Email</label>
-				<span style="display:none" class="error_message" id="email_error"></span>
-				</div>
-
-					
-				<div id="form_3"class="group">      
+			</div>				
+			<div id="form_2" class="group">      
+					<input id="email" name="email_contato" type="text" required>
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label>Email</label>
+					<span style="display:none" class="error_message" id="email_error"></span>
+			</div>					
+			<div id="form_3"class="group">      
 				<input name="telefone_contato" type="text" required>
 				<span class="highlight"></span>
 				<span class="bar"></span>
 				<label>Telefone</label>
 				<span style="display:none"   class="error_message" id="telefone_error"></span>
-				</div>
+			</div>
 
-				<div class="container_btn" style="margin-top: -15px;">
+			<div class="container_btn" style="margin-top: -15px;">
 				<input class="btn" id="btn_enviar" onclick="inserirContato(event)" type="submit" value="Enviar">
 				<input class="btn" id="btn_verifica" onclick="consultaEmail(event)" style="display: none" type="submit" name="verifica_email" value="Consultar">
-				</div>
+			</div>
 				<input type="hidden" name="salva_contato">
 		</form>
 </div>

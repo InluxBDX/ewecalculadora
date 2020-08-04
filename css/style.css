@@ -27,6 +27,7 @@ h2 small {
 .group            { 
   position:relative; 
   margin-bottom:35px; 
+  margin-top:10px;
 }
 input               {
   font-size:18px;
@@ -58,6 +59,7 @@ label                {
 .container_btn .btn:hover{
     background-color: rgb(120, 238, 150);
     color: black;
+    
 }
 
 .container_btn .btn{     
@@ -83,7 +85,8 @@ label                {
     border: 1px solid #888;
     border-color: transparent;
     border-radius: 10px;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 25%; /* Could be more or less, depending on screen size */
+    text-align: center;
     
      
     }
@@ -110,7 +113,9 @@ label                {
     cursor: pointer;
     }
   
-  
+  #modal-text{
+    color: #052002d0;
+  }
   
     .close-style:hover,
     .close-style:focus {
@@ -120,7 +125,7 @@ label                {
     }
     
   
-  .modal-style {
+  .calc-style{
     grid-area: form;
     margin-left: auto;
     margin-right: auto;
@@ -133,6 +138,24 @@ label                {
      
     }
 
+
+    .modal-style {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      opacity: 1;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      animation-name: modal-animacao-abrir;
+      animation-duration: 0.4s;
+   
+  }
+  
 
 /* active state */
 input:focus ~ label, input:valid ~ label {
@@ -163,6 +186,48 @@ input:focus ~ label, input:valid ~ label {
   left:50%;
 }
 
+
+.close-style{
+	color: #007bff;
+	float: right !important;
+	font-size: 28px;
+	font-weight: bold;
+	margin-top: auto;
+	cursor: pointer;
+  }
+
+
+
+  .close-style:hover,
+  .close-style:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+  }
+  
+  
+  .close_button:hover,
+  .close_button:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+  }
+  
+
+  
+  @keyframes modal-animacao-abrir {
+    from {display: block; opacity: 0}
+    to {display: none; opacity: 1}
+    }
+  
+    @keyframes modal-animacao-fechar {
+    from {display: block; opacity: 1}
+    to {display: none; opacity: 0}
+    }
+   
+
+
+
 .gotas{
   position: relative;
   top: 100px;
@@ -183,14 +248,11 @@ input:focus ~ label, input:valid ~ label {
     margin-left: auto;
     margin-right: auto;
     color:#052002d0;
+    margin-top:-10px;
 
 }
 
-#btn_email{
-  color: green;
 
-
-}
 
 
 #flex-container-admin{
@@ -202,7 +264,8 @@ input:focus ~ label, input:valid ~ label {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  
 
 }
 
@@ -211,6 +274,7 @@ input:focus ~ label, input:valid ~ label {
   
   margin-left: auto;
   margin-right: auto;  
+  margin-top:50px;
 }
 
 
@@ -287,7 +351,8 @@ input:focus ~ label, input:valid ~ label {
   margin-right: auto;
   padding-top: 13px;
   flex-direction: row;
-  gap:15px;
+  width: 150px;
+  justify-content: space-between;
 }
 
 .logo_social{
@@ -325,6 +390,8 @@ input:focus ~ label, input:valid ~ label {
     display: block;
     margin-right: auto;
     margin-left: auto;
+    animation-name: modal-animacao-abrir;
+    animation-duration: 0.4s;
     /* width: 50%; */
     
 }
@@ -379,6 +446,20 @@ input:focus ~ .highlight {
   width: 25px;
   height: 25px;
 }
+
+.modal-content-style {
+  background-color:white;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-color: transparent;
+  border-radius: 10px;
+  width: 50%; /* Could be more or less, depending on screen size */
+  text-align: center;
+  
+  
+   
+  }
 
  
 }
