@@ -295,7 +295,7 @@ input:focus ~ label, input:valid ~ label {
 .drop:after{
   display:block; 
   content:"";
-  background:#2e8ece;
+  background:#ccffdc;
   width:160px;
   height:160px;
   margin-left: auto;  
@@ -304,7 +304,7 @@ input:focus ~ label, input:valid ~ label {
   animation-fill-mode: both;
   border-radius: 50%;   
   transform:scale(0.7,1) rotate(45deg);  
-  box-shadow: 1px 1px 7px #1a1a1a;
+  box-shadow: 1px 1px 7px #ccffdc;
 }
 
  @keyframes gota {
@@ -351,9 +351,11 @@ input:focus ~ label, input:valid ~ label {
 .grid-container{
     display: grid;
     grid-template-areas: '. . logo . .'
-    '. . social . .'
     '. . texto . .'
-    '. .form . .' ;
+    '. .form . .' 
+    '. .form . .' 
+    '. . social . .'
+    '. . social . .';
     grid-template-columns: auto auto auto auto auto ;
     
 }
@@ -367,6 +369,7 @@ input:focus ~ label, input:valid ~ label {
   flex-direction: row;
   width: 150px;
   justify-content: space-between;
+  margin-bottom: -10px;
 }
 
 .logo_social{
