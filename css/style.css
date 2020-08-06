@@ -262,7 +262,7 @@ input:focus ~ label, input:valid ~ label {
     margin-left: auto;
     margin-right: auto;
     color:#052002d0;
-    margin-top:-10px;
+   
 
 }
 
@@ -455,7 +455,7 @@ input:focus ~ .highlight {
 
   #texto{
     width: 200px;
-    margin-top:-15px;
+    
   }
 
 
