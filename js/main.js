@@ -135,11 +135,11 @@ function calculaGotas(){
                 //btn_reset.addEventListener("click", novoCalculo());
 
                 document.getElementById("msg2").innerHTML="<b>"+"Para os valores especificados, você deverá diluir "
-                + "<br>" + gotas + " gotas em seu óleo essencial."+"<br>" + "<b>";
+                + gotas + " gotas em seu óleo essencial."+"<br>" + "<b>";
 
                 document.getElementById("social").style.marginTop = "80px";
 
-                result.innerHTML = gotas + " gotas";          
+                result.innerHTML = gotas;          
                 }
    };
    
