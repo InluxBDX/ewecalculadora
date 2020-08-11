@@ -3,7 +3,7 @@
 
 function is_localhost() {		
     // set the array for testing the local environment
-    $whitelist = array( '127.0.0.1', '::1');
+    $whitelist = array( '127.0.0.1', '::1', '35.247.202.88');
     
     // check if the server is in the array
     if ( in_array( $_SERVER['REMOTE_ADDR'], $whitelist ) ) {
@@ -26,7 +26,7 @@ class conectaDB{
         $senha = "admin";
         $db = "eweterapias";  
 
-        /*
+        
         if(!is_localhost()){
             $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
            if(!empty($url)){
@@ -35,7 +35,7 @@ class conectaDB{
                 $senha = $url["pass"];
                 $db = substr($url["path"], 1);           
              }
-        }*/
+        }
         try{
             self:self::$conexao = mysqli_connect($server, $usuario, $senha, $db);
          
