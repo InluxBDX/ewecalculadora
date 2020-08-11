@@ -11,6 +11,7 @@
 
 <body>
 
+
 <div id="grid" class="grid-container">
 <div id="logo"> 
 		<a href="index.php"><img src="images/logo.jpeg" alt=""></a>		
