@@ -26,6 +26,7 @@ class conectaDB{
         $senha = "admin";
         $db = "eweterapias";  
 
+        /*
         if(!is_localhost()){
             $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
            if(!empty($url)){
@@ -34,7 +35,7 @@ class conectaDB{
                 $senha = $url["pass"];
                 $db = substr($url["path"], 1);           
              }
-        }
+        }*/
         try{
             self:self::$conexao = mysqli_connect($server, $usuario, $senha, $db);
          
