@@ -25,10 +25,10 @@ class conectaDB{
         $usuario ="root";
         $senha = "admin";
         $db = "eweterapias";  
-         
+
         if(!is_localhost()){
             $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-           if($url){
+           if(!empty($url)){
                 $server = $url["host"];
                 $usuario = $url["user"];
                 $senha = $url["pass"];
