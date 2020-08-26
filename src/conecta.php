@@ -3,9 +3,9 @@
 
 function is_localhost() {		
     
-    $nome_server = $_SERVER['HTTP_HOST'];
+  
     // set the array for testing the local environment
-    $whitelist = array( '127.0.0.1', '::1', $nome_server);
+    $whitelist = array( '127.0.0.1', '::1', "localhost");
     
     // check if the server is in the array
     if ( in_array( $_SERVER['HTTP_HOST'], $whitelist ) ) {
@@ -36,6 +36,11 @@ class conectaDB{
                 $usuario = $url["user"];
                 $senha = $url["pass"];
                 $db = substr($url["path"], 1);           
+             }else{
+                $server = "localhost";
+                $usuario ="root";
+                $senha = "admin";
+                $db = "eweterapias";          
              }
         }
         try{
