@@ -1,4 +1,12 @@
+<?php
 
+
+
+$nome_server = $_SERVER['HTTP_HOST'];
+	echo $nome_server;
+
+
+?>
 
 
 <!DOCTYPE html>
