@@ -32,7 +32,7 @@ class conectaDB{
         
         if(!is_localhost()){
             $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-           if(!empty($url)){
+           if(!empty($url["host"] && !empty($url["user"]))){
                 $server = $url["host"];
                 $usuario = $url["user"];
                 $senha = $url["pass"];
