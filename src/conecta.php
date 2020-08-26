@@ -3,7 +3,7 @@
 
 function is_localhost() {		
     // set the array for testing the local environment
-    $whitelist = array( '127.0.0.1', '::1', 'localhost', '35.247.202.88');
+    $whitelist = array( '127.0.0.1', '::1', 'localhost', '34.95.150.38');
     
     // check if the server is in the array
     if ( in_array( $_SERVER['HTTP_HOST'], $whitelist ) ) {
