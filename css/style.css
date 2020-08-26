@@ -43,6 +43,13 @@ h2 small {
   margin-bottom:35px; 
   margin-top:10px;
 }
+
+input[type="number"]:invalid{
+  border-color: black;
+
+
+}
+
 input               {
   font-size:18px;
   padding:10px 10px 10px 5px;
@@ -87,8 +94,9 @@ label                {
     color:white;
   }
   .error_message{
-      font-weight: bold;
+      font-weight: normal;
       color:#d63533;
+      font-size: 18px;
 
 
   }
@@ -410,6 +418,7 @@ input:focus ~ label, input:valid ~ label {
     animation-name: modal-animacao-abrir;
     animation-duration: 0.4s;
     /* width: 50%; */
+    max-width: 300px;
     
 }
 

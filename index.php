@@ -85,7 +85,7 @@
 
 
 <div class="grid-form">
-	<form id="contato-form" class="grid-form" action="src/contato_ctrl.php" name="contato_form" method="POST">
+	<form id="contato-form" class="grid-form" name="contato_form" method="POST">
 			<div id="form_1" class="group">      
 				<input name="nome_contato" type="text" required>
 				<span class="highlight"></span>

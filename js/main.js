@@ -1,4 +1,20 @@
 
+'use strict';
+
+const abreCalculadora = (e) => {
+    if(e==-1) { 
+          document.getElementById("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
+                          
+          document.getElementById("contato-form").style.display = "none";
+          document.getElementById("msg").style.display = "block";	
+
+          document.getElementById("num1").value=''
+          document.getElementById("num2").value='';
+          
+    }
+};
+
+
 function veriEmail(){
     event.preventDefault();
            
@@ -273,20 +289,8 @@ function inserirContato(event){
     document.getElementById("email_error").style.display = "none";
     document.getElementById("telefone_error").style.display = "none";
 }
-abreCalculadora = (e) => {
-      if(e==-1) { 
-            document.getElementById("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
-                            
-            document.getElementById("contato-form").style.display = "none";
-            document.getElementById("msg").style.display = "block";	
 
-            document.getElementById("num1").value=''
-            document.getElementById("num2").value='';
-            
-      }
-};
-
-novoCalculo = () => {  
+const novoCalculo = () => {  
           
           document.getElementById("water-drop").style.display = "none";
           document.getElementById("result").remove();
