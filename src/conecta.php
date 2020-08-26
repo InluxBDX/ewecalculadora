@@ -23,7 +23,7 @@ class conectaDB{
        
     static public function criarConexao(){
        
-        $server = $_SERVER['HTTP_HOST'];
+        $server = "localhost";
         $usuario ="root";
         $senha = "admin";
         $db = "eweterapias";  
