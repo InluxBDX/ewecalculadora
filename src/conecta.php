@@ -14,6 +14,7 @@ function is_localhost() {
         return true;
         
     }
+        return false;
     
 }
 
