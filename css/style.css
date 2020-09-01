@@ -33,12 +33,17 @@ tr:nth-child(even) {
 }
 
 
-#grid-container{
+#lista-container{
   display: grid;
-  grid-template-areas: '. . campos . .'
-  '. . campos . .'
-  '. . table . .'
-  '. . table . .';
+  grid-template-areas: '. campos . logout'
+  'table table table table'
+  'table table table table'
+  'table table table table';
+}
+
+#exp_container{
+  width: 400px; grid-area: campos;margin-bottom: 40px;
+    margin-top: 10px;
 }
 
 #lista{
@@ -76,10 +81,20 @@ h2 small {
 input[type="number"]:invalid{
   border-color: black;
 
-
 }
 
-input               {
+.container_btn .btn{     
+  background-color: #052002d0;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  color:white;
+}
+
+input{
   font-size:18px;
   padding:10px 10px 10px 5px;
   display:block;
@@ -112,16 +127,6 @@ label                {
     
 }
 
-.container_btn .btn{     
-    background-color: #052002d0;
-    font-size: 16px;
-    padding: 16px 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-    color:white;
-  }
   .error_message{
       font-weight: normal;
       color:#d63533;
