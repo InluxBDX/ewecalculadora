@@ -35,7 +35,7 @@
 				</div>
 	</div>				
 	<div id="form_2" class="group">      
-				<input id="senha" name="senha" type="text" required>
+				<input id="senha" name="senha" type="password" required>
 				<span class="highlight"></span>
 				<span class="bar"></span>
 				<label>Senha</label>

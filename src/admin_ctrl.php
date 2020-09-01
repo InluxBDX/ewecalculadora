@@ -3,7 +3,7 @@
 require_once('conecta.php');
 
 session_start(); 
-    $conDB = conectaDB::criarConexao();
+    $conDB = conectaDB::getConexao();
    
     $usuario = "";
 	$senha = "";
@@ -42,7 +42,7 @@ session_start();
 				$_SESSION['logged_in'] = true;
 				$_SESSION['success'] = "You are now logged in";
 		 			header('location: /ewecalculadora/lista.php');
-					$conDB->close();
+				
 				}else {
 					$errors['usuario'] ="Senha ou usuário estão incorretos";    
 					echo json_encode($errors);
