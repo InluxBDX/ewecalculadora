@@ -10,8 +10,9 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['usuario']);
     
     unset($_SESSION['id_user']);
-    header("location: ../ewecalculadora/admin.php");
-}
+	header("location: admin.php");
+	}
+ 
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +24,7 @@ if (isset($_GET['logout'])) {
     <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Niconne' rel='stylesheet'>
     <script src="js/main.js"></script>
-
-
 <style>
-
-
-
 
 @media (max-width: 400px) {
 
@@ -64,17 +60,17 @@ if (isset($_GET['logout'])) {
 
  window.addEventListener("DOMContentLoaded", (event) =>{     
         event.preventDefault();     
-        var y = new XMLHttpRequest();        
+        const y = new XMLHttpRequest();        
         y.onreadystatechange = function(event){    
-                var j = [];
+            let j = [];
             if (this.readyState == 4 && this.status == 200) {
                 j =  JSON.parse(this.responseText);                       
-            for(i=0;i<j.length;i++){
-                    var row = document.createElement("tr");
-                    var row_cell_nome = document.createElement("td");
-                    var row_cell_email = document.createElement("td");
-                    var row_cell_telefone = document.createElement("td");
-                    var row_cell_cadastro = document.createElement("td");
+            for(let i=0;i<j.length;i++){
+                    const row = document.createElement("tr");
+                    const row_cell_nome = document.createElement("td");
+                    const row_cell_email = document.createElement("td");
+                    const row_cell_telefone = document.createElement("td");
+                    const row_cell_cadastro = document.createElement("td");
                     row.setAttribute("id", "r"+i);                
                     document.getElementById("body_list").appendChild(row);
                     row.appendChild(row_cell_nome);
@@ -86,9 +82,18 @@ if (isset($_GET['logout'])) {
                     row_cell_telefone.textContent = j[i].telefone;
                     row_cell_cadastro.textContent = j[i].data_contato
             }
+            let n = document.createElement("span");
+            document.getElementById("lista-container").append(n);
+           
+                      
+                n.innerHTML = j.length;
+            
         } 
-    }
 
+
+            
+    }
+    
     y.open("GET", "src/lista_ctrl.php", true);       
         y.send();
 
@@ -102,7 +107,7 @@ if (isset($_GET['logout'])) {
  
     <div id="logout_container" class="container_btn" style="grid-area: logout;margin-bottom: 40px">
 
-        <input id="logout" style="width:100px" type="button" class="btn" href="" value="Sair">
+        <a href="lista.php?logout='1'"id="logout" style="width:100px" type="button" class="btn" href="">Sair</a>
 
     </div>
   <div id="exp_container">

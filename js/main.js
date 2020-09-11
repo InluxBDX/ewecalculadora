@@ -1,42 +1,47 @@
 
 'use strict';
-
 const abreCalculadora = (e) => {
     if(e==-1) { 
-          document.getElementById("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
-                          
-          document.getElementById("contato-form").style.display = "none";
-          document.getElementById("msg").style.display = "block";	
-
-          document.getElementById("num1").value=''
-          document.getElementById("num2").value='';
-          
+          op("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial.";              
+          u(op("contato-form"), c.n);
+          u(op("btn_verifica"), c.n);
+          u(op("msg"), c.f);
+          op("msg").style.flexDirection = "column";
+          op("num1").value=''
+        
+          op("num2").value=''; 
+          document.querySelector(".container_btn").style.marginTop = "0px";       
     }
 };
 
-
 function veriEmail(){
-    event.preventDefault();
-           
-    document.getElementById("email_error").style.display = "none";
-    document.getElementById("form_1").style.display = "none";
-    document.getElementById("form_3").style.display = "none";
-    document.getElementById("btn_enviar").style.display = "none";
-    document.getElementById("btn_verifica").style.display = "block";
-    document.getElementById("msg2").innerHTML = "Digite seu e-mail cadastrado no campo abaixo, para"
-    + " acessar a caculadora";
-    
+    event.preventDefault();      
+    const q = [
+        u(op("email_error"),c.n),
+        u(op("form_1"),c.n),
+        u(op("form_3"),c.n),
+        u(op("btn_enviar"),c.n),
+        u(op("btn_verifica"), c.b),
+        op("msg2").innerHTML = "Digite seu e-mail cadastrado no campo abaixo, para"
+        + " acessar a caculadora"
+    ]    
+}
+function u(b,c){
+    if(b){
+        b.style.display = c;
+    }
 }
 
 function habilitaFormCad(event){
     event.preventDefault();
-    document.getElementById("form_1").style.display = "block";
-    document.getElementById("form_3").style.display = "block";
-    document.getElementById("btn_enviar").style.display = "block";
-    document.getElementById("btn_verifica").style.display = "none";
+    u(op("form_1"), c.b);
+    u(op("form_3"),c.b);
+    u(op("btn_enviar"), c.b);
+    u(op("btn_verifica"), c.n);
 }
+
 function consultaEmail(event){
-        var r = document.getElementById("email");      
+        var r = op("email");      
         event.preventDefault();   
         //Retirar após debug
         console.log(encodeURIComponent(r.name) + "=" + encodeURIComponent(r.value));
@@ -54,7 +59,7 @@ function consultaEmail(event){
                 console.log(this.responseText);
         
                 if(errors["email"]){
-                    var x = document.getElementById("email_error");
+                    var x = op("email_error");
                     x.textContent = errors.email;
                     x.style.display = "block";
                  }
@@ -80,13 +85,13 @@ function consultaEmail(event){
 			
 				modal_content.appendChild(text);
 																
-				document.getElementById("modal-text").style.fontWeight = "bolder";
-				document.getElementById("modal-interesse").style.display = "block";
-				document.getElementById("modal-text").innerHTML = errors["usuario"];										
-				document.getElementById("modal-interesse").style.animationName = "modal-animacao-abrir";
+				op("modal-text").style.fontWeight = "bolder";
+				op("modal-interesse").style.display = "block";
+				op("modal-text").innerHTML = errors["usuario"];										
+				op("modal-interesse").style.animationName = "modal-animacao-abrir";
 
                 setTimeout(function(){
-                    document.getElementById("modal-interesse").style.animationName = "modal-animacao-fechar";
+                    op("modal-interesse").style.animationName = "modal-animacao-fechar";
                     modal.style.display = "none";                    
                     window.location.reload();
                    
@@ -99,66 +104,108 @@ function consultaEmail(event){
      }
     }
 
-function calculaGotas(){ 
-      var input_ml = document.getElementById("num1");
-      var input_perc = document.getElementById("num2");      
+const n = (p) => {
+        if(p){
+          return document.createElement(p);
+        };
+}
 
-      if(parseFloat(input_ml.value)==0 || input_ml.value==""){
-            var x = document.getElementById("ml_error");
+function b(p,b,o){
+        if(p){
+          p.setAttribute(b,o);
+        }
+    }
+
+const a = {r:n("div"),b:n("div"),c:n("input"),d:"u+",g:"u+",y:n("span"),h:"u+"};
+const z = {i:"id", c:"class", t:"type", v:"value", s:"style", j:"onclick"};
+const c = {b:"block", n:"none", f:"flex"}
+
+
+const novoCalculo = () => {   
+    op("water-drop").style.display = "none";
+    op("reset").style.display = "none";         
+    op("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial." ;               
+    op("contato-form").style.display = "none";
+    op("msg").style.display = "flex";
+    op("msg").style.flexDirection = "column";
+    op("num1").value='';
+    op("num2").value='';
+};
+
+function calculaGotas(){ 
+      const i = {ml:null, perc:null};
+
+      i.ml= op("num1");
+      i.perc = op("num2");      
+
+      if(parseFloat(i.ml.value)==0 || i.ml.value==""){
+            const x = op("ml_error");
             x.textContent = "Valor deve ser maior que 0!"
             x.style.display = "block";
        } else{
-             document.getElementById("ml_error").style.display="none";
+             op("ml_error").style.display="none";
        }
-       if(parseFloat(input_perc.value)==0 || input_perc.value==""){
-            var x = document.getElementById("perc_error");
+       if(parseFloat(i.perc.value)==0 || i.perc.value==""){
+            const x = op("perc_error");
             x.textContent = "Valor deve ser maior que 0!"
             x.style.display = "block";
        }else{
-        document.getElementById("perc_error").style.display="none";
+        op("perc_error").style.display="none";
        }
 
-       if(parseFloat(input_ml.value)>0 && parseFloat(input_perc.value)>0){
+       if(parseFloat( i.ml.value)>0 && parseFloat(i.perc.value)>0){
+                a.d = parseFloat(i.perc.value/100);
+                a.g = Math.round(parseFloat((parseFloat(i.ml.value)*a.d*0.25)*100));
 
-                var result_container = document.createElement("div");
-                var btn_container = document.createElement("div");
-                var btn_reset = document.createElement("input");
-                var perc_valor = parseFloat(input_perc.value/100);
+                op("msg").style.display = "none";
 
-                var gotas = Math.round(parseFloat((parseFloat(input_ml.value)*perc_valor*0.25)*100));
+                op("water-drop").style.display = "block";
+        
+                
+               
+                const v  = [
+               
+                    b(a.c, z.c, "btn"),
+                    b(a.c,z.i, "reset"),
+                    b(a.c,z.t, "button"),
+                    b(a.c,z.v, "Novo Cálculo"),
+                    b(a.c,z.j, "novoCalculo()")
+                  ];
+                
+                
 
-                document.getElementById("msg").style.display = "none";
 
-                document.getElementById("water-drop").style.display = "block";
-                var result = document.createElement("span");
+                op("water-drop").append(a.r);   
+                a.r.append(a.y);
+                b(a.r,z.c,"gota-container")       
+                op("water-drop").append(a.r);
+                op("buttons").insertBefore(a.c,op("buttons").childNodes[5]);
+                
+                b(a.y,z.s, "top: -25px; position: relative;");
+                b(op("#social"), z.s, "margin-top:55px;");
 
-                document.getElementById("grid").appendChild(result_container);
-                result_container.setAttribute("id", "result");
-                result_container.setAttribute("class", "gotas");
-                btn_container.setAttribute("class", "container_btn");
-                btn_reset.setAttribute("class", "btn");
-                btn_reset.setAttribute("id", "reset");
-                btn_reset.setAttribute("type", "button");
-                btn_reset.setAttribute("value", "Novo Cálculo");
-                btn_reset.setAttribute("onclick", "novoCalculo()");
-                result_container.appendChild(result);
-                result_container.appendChild(btn_container);
-                btn_container.appendChild(btn_reset);
-                result.setAttribute("style", "top: -25px; position: relative;")
+                if(op("reset")){
+                    op("reset").style.display = "flex";   
+                }
 
-                btn_container.setAttribute("style", "position: relative;top: 50px;")
 
-                //btn_reset.addEventListener("click", novoCalculo());
+                b(a.b,z.s, "position: relative;top: 50px;");
+                a.h = "<b>"+"Para os valores especificados, você deverá diluir "
+                + a.g + " gotas em seu óleo essencial."+"<br>" + "<b>" ;
 
-                document.getElementById("msg2").innerHTML="<b>"+"Para os valores especificados, você deverá diluir "
-                + gotas + " gotas em seu óleo essencial."+"<br>" + "<b>";
-
-                document.getElementById("social").style.marginTop = "80px";
-
-                result.innerHTML = gotas;          
+                //a.c.addEventListener("click", novoCalculo());
+                op("msg2").innerHTML=a.h;
+              
+                a.y.innerHTML = a.g;          
                 }
    };
    
+function op(b){
+    if(b){
+       return document.getElementById(b);
+    }
+}
+  
 /*!
  * Serialize all form data into a query string
  * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
@@ -174,7 +221,7 @@ function serialize(form) {
 
         var field = form.elements[i];
 
-        // Don't serialize fields without a name, submits, buttons, file and reset inputs, and disabled fields
+        // Don't serialize fields without a name, submits, buttons, file and reset i, and disabled fields
         if (!field.name || field.disabled || field.type === 'file' || field.type === 'reset' || field.type === 'submit' || field.type === 'button') continue;
 
         // If a multi-select, get all selections
@@ -210,7 +257,7 @@ function validaCampos(form){
 
 }*/
 function inserirContato(event){
-    var form2 = document.getElementById("contato-form");     
+    var form2 = op("contato-form");     
         event.preventDefault();  
         var s = serialize(form2);
         //Retirar após debug
@@ -228,17 +275,17 @@ function inserirContato(event){
                     abreCalculadora(errors);               
                 //Verificar uma forma melhor de fazer essa validação utilizando O JSON
                 if(errors["nome"]){
-                    var s = document.getElementById("nome_error");
+                    var s = op("nome_error");
                     s.textContent = errors.nome;
                     s.style.opacity = "1";
                 }
                 if(errors["email"]){
-                    var x = document.getElementById("email_error");
+                    var x = op("email_error");
                     x.textContent = errors.email;
                     x.style.display = "block";
                 }
                 if(errors["telefone"]){
-                    var u = document.getElementById("telefone_error");
+                    var u = op("telefone_error");
                     u.textContent = errors.telefone;
                     u.style.display = "block";
                 }
@@ -258,26 +305,27 @@ function inserirContato(event){
                     modal.setAttribute("id", "modal-interesse");
                     close.innerHTML ="x";
                     
-                    document.getElementById("grid").append(modal)
+                    op("grid").append(modal)
                     modal.appendChild(modal_content);
                     
                     modal_content.appendChild(text);
                                                                     
-                    document.getElementById("modal-text").style.fontWeight = "bolder";
-                    document.getElementById("modal-interesse").style.display = "block";
-                    document.getElementById("modal-text").innerHTML = errors["usuario"] + "<br>" + "Redirecionado para a calculadora.....";										
-                    document.getElementById("modal-interesse").style.animationName = "modal-animacao-abrir";
+                    op("modal-text").style.fontWeight = "bolder";
+                    op("modal-interesse").style.display = "block";
+                    op("modal-text").innerHTML = errors["usuario"] + "<br>" + "Redirecionado para a calculadora.....";										
+                    op("modal-interesse").style.animationName = "modal-animacao-abrir";
 
                     setTimeout(function(){
-                        document.getElementById("modal-interesse").style.animationName = "modal-animacao-fechar";
+                        op("modal-interesse").style.animationName = "modal-animacao-fechar";
                         modal.style.display = "none";                    
-                        document.getElementById("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
+                        op("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
                                         
-                        document.getElementById("contato-form").style.display = "none";
-                        document.getElementById("msg").style.display = "block";	
+                        op("contato-form").style.display = "none";
+                        op("msg").style.display = "block";	
+                        op("btn_enviar").style.display = "none";
             
-                        document.getElementById("num1").value=''
-                        document.getElementById("num2").value='';
+                        op("num1").value=''
+                        op("num2").value='';
 
                     },1500);                    
                     }
@@ -285,28 +333,15 @@ function inserirContato(event){
         }   
     //form2.reset();   
     }
-    document.getElementById("nome_error").style.opacity = "0";
-    document.getElementById("email_error").style.display = "none";
-    document.getElementById("telefone_error").style.display = "none";
+    op("nome_error").style.opacity = "0";
+    op("email_error").style.display = "none";
+    op("telefone_error").style.display = "none";
 }
 
-const novoCalculo = () => {  
-          
-          document.getElementById("water-drop").style.display = "none";
-          document.getElementById("result").remove();
-          
-          document.getElementById("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
-                          
-          document.getElementById("contato-form").style.display = "none";
-          document.getElementById("msg").style.display = "block";	
 
-          document.getElementById("num1").value=''
-          document.getElementById("num2").value='';
-        
-}
 
 function loginPainel(event){
-        var form2 = document.getElementById("form-admin");     
+        var form2 = op("form-admin");     
         event.preventDefault();  
         var s = serialize(form2);
         //Retirar após debug
@@ -328,12 +363,12 @@ function loginPainel(event){
                 errors = JSON.parse(this.responseText);
                 console.log(errors);   
             if(errors["nome_usuario"]){
-                    var s = document.getElementById("usuario_error");
+                    var s = op("usuario_error");
                     s.textContent = errors.nome_usuario;
                     s.style.opacity = "1";
                 }
             if(errors["senha"]){
-                    var x = document.getElementById("senha_error");
+                    var x = op("senha_error");
                     x.textContent = errors.senha;
                     x.style.display = "block";
                 }

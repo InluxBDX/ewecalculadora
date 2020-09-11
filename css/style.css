@@ -83,7 +83,9 @@ input[type="number"]:invalid{
 
 }
 
-.container_btn .btn{     
+.container_btn .btn{  
+  display: flex;
+  flex-direction: column;   
   background-color: #052002d0;
   font-size: 16px;
   padding: 16px 30px;
@@ -190,7 +192,7 @@ label                {
     overflow: auto; /* Enable scroll if needed */   
     animation-name: modal-animacao-abrir;
     animation-duration: 0.4s;
-    padding-top: 20px;   
+  
      
     }
 
@@ -333,6 +335,20 @@ input:focus ~ label, input:valid ~ label {
   margin-top:50px;
 }
 
+.gota-container{
+  display:flex; 
+  font-size:35px;
+  display: flex;
+font-size: 35px;
+margin-left: auto;
+margin-right: auto;
+justify-content: center;
+z-index: 10;
+position: relative;
+flex-direction: row-reverse;
+top: 100px;
+}
+
 
 .drop:after{
   display:block; 
@@ -390,15 +406,19 @@ input:focus ~ label, input:valid ~ label {
 
 }
 
-.grid-container{
-    display: grid;
-    grid-template-areas: '. . logo . .'
+
+/*grid-template-areas: '. . logo . .'
     '. . texto . .'
     '. .form . .' 
     '. .form . .' 
     '. . social . .'
     '. . social . .';
-    grid-template-columns: auto auto auto auto auto ;
+    grid-template-columns: auto auto auto auto auto ;*/
+
+.grid-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     
 }
 
@@ -411,7 +431,7 @@ input:focus ~ label, input:valid ~ label {
   flex-direction: row;
   width: 150px;
   justify-content: space-between;
-  margin-bottom: -10px;
+ 
 }
 
 .logo_social{
@@ -453,6 +473,13 @@ input:focus ~ label, input:valid ~ label {
     animation-duration: 0.4s;
     /* width: 50%; */
     max-width: 300px;
+    margin-bottom:-15px;
+    margin-top: -7px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center
     
 }
 
@@ -494,13 +521,16 @@ input:focus ~ .highlight {
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 992px) {
 
   #texto{
     width: 200px;
     
   }
 
+    .grid-form{
+ 
+    }
 
 .logo_social{
   width: 25px;
@@ -520,6 +550,24 @@ input:focus ~ .highlight {
   
    
   }
+
+  
+.container_btn{
+  
+
+
+
+}
+
+.calc-style{
+
+}
+ 
+
+.drop:after{
+  width: 220px;
+height: 220px;
+}
 
  
 }
