@@ -185,7 +185,7 @@ function calculaGotas(){
                 b(op("#social"), z.s, "margin-top:55px;");
 
                 if(op("reset")){
-                    op("reset").style.display = "flex";   
+                    op("reset").style.display = "block";   
                 }
 
 

@@ -84,8 +84,7 @@ input[type="number"]:invalid{
 }
 
 .container_btn .btn{  
-  display: flex;
-  flex-direction: column;   
+  
   background-color: #052002d0;
   font-size: 16px;
   padding: 16px 30px;
