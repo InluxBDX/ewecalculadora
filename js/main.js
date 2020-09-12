@@ -8,7 +8,7 @@ const abreCalculadora = (e) => {
           u(op("msg"), c.f);
           op("msg").style.flexDirection = "column";
           op("num1").value=''
-        
+          op("btn_enviar").style.display = "none";
           op("num2").value=''; 
           document.querySelector(".container_btn").style.marginTop = "0px";       
     }
@@ -272,7 +272,7 @@ function inserirContato(event){
                 errors = JSON.parse(this.responseText);
                 //Retirar após debug
                 console.log(errors);              
-                    abreCalculadora(errors);               
+                abreCalculadora(errors);               
                 //Verificar uma forma melhor de fazer essa validação utilizando O JSON
                 if(errors["nome"]){
                     var s = op("nome_error");
