@@ -29,21 +29,25 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color:rgb(120, 238, 150);;
+  background-color:rgb(219, 242, 225);
 }
 
+#logout:link{
+
+  text-decoration: none;
+}
 
 #lista-container{
-  display: grid;
-  grid-template-areas: '. campos . logout'
-  'table table table table'
-  'table table table table'
-  'table table table table';
+  display: flex;
+  flex-direction: column;
 }
 
-#exp_container{
-  width: 400px; grid-area: campos;margin-bottom: 40px;
-    margin-top: 10px;
+.exp_container{
+  display:flex;
+  width: 400px; 
+  grid-area: campos;
+  margin-bottom: 40px;
+  margin-top: 10px;
 }
 
 #lista{
@@ -526,7 +530,7 @@ input:focus ~ .highlight {
     transform:scale(0.7);
     margin-left: -10px;
     margin-right: -10px;
-  }
+    }
 
 }
 
@@ -537,10 +541,7 @@ input:focus ~ .highlight {
     
   }
 
-    .grid-form{
- 
-    }
-
+  
 .logo_social{
   width: 25px;
   height: 25px;
@@ -555,28 +556,12 @@ input:focus ~ .highlight {
   border-radius: 10px;
   width: 50%; /* Could be more or less, depending on screen size */
   text-align: center;
-  
-  
    
   }
 
-  
-.container_btn{
-  
-
-
-
-}
-
-.calc-style{
-
-}
- 
-
 .drop:after{
   width: 220px;
-height: 220px;
+  height: 220px;
 }
-
  
 }

@@ -96,9 +96,7 @@ function consultaEmail(event){
                     window.location.reload();
                    
                 },1500);
-
-
-                    
+              
                 }          
         }       
      }
@@ -160,9 +158,7 @@ function calculaGotas(){
                 op("msg").style.display = "none";
 
                 op("water-drop").style.display = "block";
-        
-                
-               
+ 
                 const v  = [
                
                     b(a.c, z.c, "btn"),
@@ -171,10 +167,7 @@ function calculaGotas(){
                     b(a.c,z.v, "Novo Cálculo"),
                     b(a.c,z.j, "novoCalculo()")
                   ];
-                
-                
-
-
+    
                 op("water-drop").append(a.r);   
                 a.r.append(a.y);
                 b(a.r,z.c,"gota-container")       
@@ -312,7 +305,7 @@ function inserirContato(event){
                                                                     
                     op("modal-text").style.fontWeight = "bolder";
                     op("modal-interesse").style.display = "block";
-                    op("modal-text").innerHTML = errors["usuario"] + "<br>" + "Redirecionado para a calculadora.....";										
+                    op("modal-text").innerHTML = errors["usuario"] + "<br>" + "Redirecionando para a calculadora..";										
                     op("modal-interesse").style.animationName = "modal-animacao-abrir";
 
                     setTimeout(function(){

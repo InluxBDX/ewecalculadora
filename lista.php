@@ -23,6 +23,7 @@ if (isset($_GET['logout'])) {
     <title>Ewé Terapias Integrativas - Painel de Controle</title>
     <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Niconne' rel='stylesheet'>
+    
     <script src="js/main.js"></script>
 <style>
 
@@ -82,11 +83,14 @@ if (isset($_GET['logout'])) {
                     row_cell_telefone.textContent = j[i].telefone;
                     row_cell_cadastro.textContent = j[i].data_contato
             }
-            let n = document.createElement("span");
-            document.getElementById("lista-container").append(n);
-           
+            let sp = n("span");
+            document.getElementById("lista-container").append(sp);
+
+            let b = n("div");
+            document.getElementById("lista-container").append(b);
+            b.append(sp);
                       
-                n.innerHTML = j.length;
+            sp.innerHTML = j.length;
             
         } 
 
@@ -104,21 +108,39 @@ if (isset($_GET['logout'])) {
 <body>
 
 <div id="lista-container">
- 
-    <div id="logout_container" class="container_btn" style="grid-area: logout;margin-bottom: 40px">
 
-        <a href="lista.php?logout='1'"id="logout" style="width:100px" type="button" class="btn" href="">Sair</a>
+    <div style="width:200px; height:500px; display: flex; flex-direction:column">
+
+    <div class="exp_container">
+        <div>
+            <img style="width:50px"src="images/export.svg">
+        </div>
+            <form method="post" action="src/export.php">
+                <div class="container_btn">
+           
+                    <input id="btn_excel" class="btn" type="submit" name="excel" value="Exportar para Excel">           
+                </div>
+            </form>
+    
+        </div>
+        <div class="exp_container">
+            <form method="post" action="src/export.php">
+                <div class="container_btn">
+                    <input id="btn_excel" class="btn" type="submit" name="excel" value="Enviar email">           
+                </div>
+            </form>
+    
+        </div>
+        <div class="exp_container">
+        <div id="logout_container" class="container_btn" style="grid-area: logout;margin-bottom: 40px">
+
+            <a href="lista.php?logout='1'"id="logout" style="display:block;width:300px" type="button" class="btn" href="">Sair</a>        </div>
 
     </div>
-  <div id="exp_container">
-        <form method="post" action="src/export.php">
-        <div class="container_btn">
-            <input id="btn_excel" class="btn" type="submit" name="excel" value="Exportar para Excel">           
-        </div>
-        </form>
 </div>
- 
-<table id="lista">
+   
+</div>
+<!-- <table id="lista">
     <tbody id="body_list">
         <tr>
             <th>Nome</th>
@@ -128,7 +150,7 @@ if (isset($_GET['logout'])) {
         <tr>
       
 </tbody>
-</table>
+</table> -->
 </div>   
 </body>
 

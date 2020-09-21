@@ -4,8 +4,7 @@ require_once('conecta.php');
 
     session_start(); 
     $conDB = conectaDB::getConexao();
-
-   
+    
     $row = ""; 
     $row_json = [];
     
