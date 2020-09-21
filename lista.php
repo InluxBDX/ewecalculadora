@@ -2,7 +2,7 @@
 <?php 
 if (!isset($_SESSION['usuario'])) {
     $_SESSION['msg'] = "You must log in first";
-    header("location: ../ewecalculadora/admin.php");
+    header("location: ../admin.php");
 }
 
 if (isset($_GET['logout'])) {
