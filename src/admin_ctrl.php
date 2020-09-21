@@ -41,7 +41,7 @@ session_start();
 				$_SESSION['id_user'] = $row['id'];	
 				$_SESSION['logged_in'] = true;
 				$_SESSION['success'] = "You are now logged in";
-		 			header('location: /ewecalculadora/lista.php');
+		 			header('location: lista.php');
 				
 				}else {
 					$errors['usuario'] ="Senha ou usuário estão incorretos";    

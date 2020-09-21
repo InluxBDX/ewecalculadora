@@ -350,7 +350,7 @@ function loginPainel(event){
             if (this.readyState == 4 && this.status == 200) {
                
             if(this.responseText.match("<!DOCTYPE html>")){              
-                    window.location.assign("/ewecalculadora/lista.php");                  
+                    window.location.assign("lista.php");                  
             }else{ 
                 var errors;
                 errors = JSON.parse(this.responseText);
