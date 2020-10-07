@@ -29,12 +29,12 @@ if (isset($_GET['logout'])) {
 
 @media (max-width: 400px) {
 
-    #lista-container{
+#lista-container{
         display: flex;
          
         align-items:center;
         flex-flow: column wrap;
-    }
+ }
 
 #logout{
      
@@ -54,10 +54,11 @@ if (isset($_GET['logout'])) {
 }
 }
 
-
 </style>
     
 <script>
+
+'use strict'
 
  window.addEventListener("DOMContentLoaded", (event) =>{     
         event.preventDefault();     

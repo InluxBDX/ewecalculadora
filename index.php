@@ -7,8 +7,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link href='https://fonts.googleapis.com/css?family=Niconne' rel='stylesheet'>
 	<script src="js/main.js"></script>
+	
 </head>
-
+ 
 <body>
 
 
@@ -19,9 +20,6 @@
 			<p>Ewé Terapias</p>
 	</div>	
     </div>
-
-
-
 <div id="texto">
 <p id="msg2">Digite seus dados abaixo, para que possamos entrar em contato e lhe fornecer mais informações sobre nossos serviços.
 	Se você já possui um email cadastrado basta <a href="" onclick="veriEmail()">clicar aqui</a> para digitar seu email.</p>
@@ -30,7 +28,7 @@
 </div>
 
 
-<div class="grid-form" style="display:flex; flex-direction: column;">
+<div class="grid-form" rota="m0" style="display:flex; flex-direction: column;">
 
 <div id="water-drop" class="drop" style="display:none; grid-area: form;padding: 20px;margin:7px;">
  
@@ -38,21 +36,21 @@
 
 	<form id="contato-form" class="grid-form" name="contato_form" method="POST">
 			<div id="form_1" class="group">      
-				<input name="nome_contato" type="text" required>
+				<input name="nome_contato" type="text" oninput="this.value = this.value.replace(/\b[^ A-Z.]/, '')"required>
 				<span class="highlight"></span>
 				<span class="bar"></span>
 				<label>Nome</label>				
 				<span style="opacity:0" class="error_message" id="nome_error"></span>
 			</div>				
 			<div id="form_2" class="group">      
-					<input id="email" name="email_contato" type="text" required>
+				<input id="email" name="email_contato" type="text" required>
 					<span class="highlight"></span>
 					<span class="bar"></span>
 					<label>Email</label>
 					<span style="display:none" class="error_message" id="email_error"></span>
 			</div>					
 			<div id="form_3"class="group">      
-				<input name="telefone_contato" type="text" required>
+				<input name="telefone_contato" type="text"  oninput="this.value = this.value.replace(/[^-0-9.]/g, '')" required>
 				<span class="highlight"></span>
 				<span class="bar"></span>
 				<label>Telefone</label>
@@ -70,7 +68,7 @@ font-weight: bolder;margin-bottom: 20px;">
  
 		</div>
 		<div class="group">      
-				<input id="num1" name="ml_value" type="number" value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  >
+				<input id="num1" name="ml_value" type="number" value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')"  >
 				<span class="highlight"></span>
 				<span class="bar"></span>
 				<label>Quantidade em ML</label>
@@ -86,13 +84,13 @@ font-weight: bolder;margin-bottom: 20px;">
 					
 		</div>
 		<div class="container_btn" style="margin-top: -15px;">
-				<input class="btn" id="btncalc" onclick="calculaGotas()" type="button" value="Calcular">
+			
 		</div>
 </div>
 
 <div class="container_btn" id="buttons" rota=0 style="display:flex; flex-direction: column; grid-area: social;
 align-items: center; ">
-
+	<input class="btn" id="btncalc" style="display: none" onclick="calculaGotas()" type="button" value="Calcular">
 <input class="btn" id="btn_enviar" onclick="inserirContato(event)" type="submit" value="Enviar">
 <input class="btn" id="btn_verifica" onclick="consultaEmail(event)" style="display: none" type="submit" name="verifica_email" value="Consultar">
 <div id="social">
@@ -147,6 +145,7 @@ C393.849,321.004,393.849,330.511,387.985,336.375z"/>
 </div>
 	
 </body>
+
 </html>
 
 

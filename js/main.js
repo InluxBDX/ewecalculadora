@@ -1,16 +1,24 @@
 
 'use strict';
+
+
+const c = {b:"block", n:"none", f:"flex"}
 const abreCalculadora = (e) => {
-    if(e==-1) { 
+    if(e==-1 || e==1) { 
           op("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial.";              
           u(op("contato-form"), c.n);
           u(op("btn_verifica"), c.n);
           u(op("msg"), c.f);
+          u(op("btncalc"), c.b);
           op("msg").style.flexDirection = "column";
           op("num1").value=''
           op("btn_enviar").style.display = "none";
           op("num2").value=''; 
-          document.querySelector(".container_btn").style.marginTop = "0px";       
+          document.querySelector(".container_btn").style.marginTop = "0px"; 
+          document.querySelector(".grid-form").setAttribute("rota", "m1"); 
+          
+            document.getElementById("btncalc").style.marginTop ="0px";
+        
     }
 };
 
@@ -31,6 +39,7 @@ function u(b,c){
         b.style.display = c;
     }
 }
+
 
 function habilitaFormCad(event){
     event.preventDefault();
@@ -116,10 +125,11 @@ function b(p,b,o){
 
 const a = {r:n("div"),b:n("div"),c:n("input"),d:"u+",g:"u+",y:n("span"),h:"u+"};
 const z = {i:"id", c:"class", t:"type", v:"value", s:"style", j:"onclick"};
-const c = {b:"block", n:"none", f:"flex"}
 
 
-const novoCalculo = () => {   
+
+const yr = () => {   
+    u(op("btncalc"), c.b);
     op("water-drop").style.display = "none";
     op("reset").style.display = "none";         
     op("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial." ;               
@@ -165,7 +175,7 @@ function calculaGotas(){
                     b(a.c,z.i, "reset"),
                     b(a.c,z.t, "button"),
                     b(a.c,z.v, "Novo Cálculo"),
-                    b(a.c,z.j, "novoCalculo()")
+                    b(a.c,z.j, "yr()")
                   ];
     
                 op("water-drop").append(a.r);   
@@ -174,7 +184,7 @@ function calculaGotas(){
                 op("water-drop").append(a.r);
                 op("buttons").insertBefore(a.c,op("buttons").childNodes[5]);
                 
-                b(a.y,z.s, "top: -25px; position: relative;");
+                b(a.y,z.s, "top: -5px; position: relative;");
                 b(op("#social"), z.s, "margin-top:55px;");
 
                 if(op("reset")){
@@ -185,10 +195,11 @@ function calculaGotas(){
                 b(a.b,z.s, "position: relative;top: 50px;");
                 a.h = "<b>"+"Para os valores especificados, você deverá diluir "
                 + a.g + " gotas em seu óleo essencial."+"<br>" + "<b>" ;
-
-                //a.c.addEventListener("click", novoCalculo());
+                document.getElementsByClassName("grid-form")[0].setAttribute("rota", "m2"); 
+                u(op("btncalc"), c.n);
+                ///a.c.addEventListener("click", novoCalculo());
                 op("msg2").innerHTML=a.h;
-              
+                a.c.style.marginTop = "0px";
                 a.y.innerHTML = a.g;          
                 }
    };
@@ -197,6 +208,7 @@ function op(b){
     if(b){
        return document.getElementById(b);
     }
+    return undefined;
 }
   
 /*!
@@ -311,11 +323,7 @@ function inserirContato(event){
                     setTimeout(function(){
                         op("modal-interesse").style.animationName = "modal-animacao-fechar";
                         modal.style.display = "none";                    
-                        op("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial."
-                                        
-                        op("contato-form").style.display = "none";
-                        op("msg").style.display = "block";	
-                        op("btn_enviar").style.display = "none";
+                        abreCalculadora(errors['size']);
             
                         op("num1").value=''
                         op("num2").value='';
@@ -372,5 +380,6 @@ function loginPainel(event){
 }
 }
 
+ 
 
 

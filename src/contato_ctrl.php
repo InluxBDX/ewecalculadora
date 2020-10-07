@@ -15,10 +15,15 @@
         
         $result = $conDB->query("SELECT * from contato where email='$email_contato'");  
        
+        
+       
         if(empty($email_contato)){
             $errors['email'] ="Por favor preencha o campo de email!";    
             $errors['size'] = count($errors);    
-        }else if($result->num_rows==0){
+        } else if(!preg_match("/^[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,}$/",$email_contato)){
+            $errors['email'] ="Email inválido!";    
+            $errors['size'] = count($errors);  
+        } else if($result->num_rows==0){
             $errors['usuario'] ="Você não possui um e-mail cadastrado!";    
             $errors['size'] = count($errors);    
         }
@@ -26,8 +31,7 @@
        $errors['size']=count($errors)-1;
         
        if($errors['size']==-1 && $result->num_rows==1){                
-           
-                    echo $errors['size'];
+                   echo $errors['size'];
           
         }else{              
                 echo json_encode($errors);
@@ -48,12 +52,19 @@
                // array_push($errors, "Por favor preencha o campo nome!");
                $errors['nome'] = "Por favor preencha o campo nome!";    
                $errors['size'] = count($errors);
-            }                      
+            }       
+                
+            if(!preg_match("/^[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,}$/",$email_contato)){
+                $errors['email'] ="Email inválido!";    
+                $errors['size'] = count($errors);  
+            }
+                
             if(empty($email_contato)){
                 $errors['email'] ="Por favor preencha o campo de email!";    
                 $errors['size'] = count($errors);    
             }
-                      
+
+                
             if(empty($telefone_contato)){
                 $errors['telefone'] = "Por favor preencha o campo de telefone!";
                 $errors['size'] = count($errors);               
@@ -67,6 +78,7 @@
 
             if($result->num_rows==1){
                 $errors['usuario'] = "Você já possui um cadastro no banco de dados!";
+                $errors['size'] = 1;
             }
 
            
