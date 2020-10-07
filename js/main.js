@@ -314,9 +314,7 @@ function inserirContato(event){
                 if(errors["nome"]){
                     var s = op("nome_error");
                     s.textContent = errors.nome;
-                    setTimeout(function(){
-                        s.style.animationName = "error-animacao-abrir";
-                     },1500)
+                    s.style.opacity = "1";
                 }
                 if(errors["email"]){
                     var x = op("email_error");
