@@ -16,8 +16,27 @@ const abreCalculadora = (e) => {
           op("num2").value=''; 
           document.querySelector(".container_btn").style.marginTop = "0px"; 
           document.querySelector(".grid-form").setAttribute("rota", "m1"); 
-          
-            document.getElementById("btncalc").style.marginTop ="0px";
+          op("btncalc").style.marginTop ="0px";
+          op("num1").addEventListener("keypress", (event) => {
+        
+                    if(event.keyCode==13){
+                        window['num2'].focus();
+                        }
+                },);       
+         op("num2").addEventListener("keypress", (event) => {        
+                    if(event.keyCode==13){                     
+                        if(navigator.appCodeName == "Mozilla"){                        
+                            window['btncalc'].focus()
+                            window['btncalc'].click();                                
+                            
+                        }else{
+                            window['btncalc'].click();
+                        }
+                          
+                  }
+                        
+                }, );
+
         
     }
 };
@@ -186,16 +205,19 @@ function calculaGotas(){
                 
                 b(a.y,z.s, "top: -5px; position: relative;");
                 b(op("#social"), z.s, "margin-top:55px;");
+                 
 
                 if(op("reset")){
                     op("reset").style.display = "block";   
                 }
-
+                const _color  = 
 
                 b(a.b,z.s, "position: relative;top: 50px;");
                 a.h = "<b>"+"Para os valores especificados, você deverá diluir "
-                + a.g + " gotas em seu óleo essencial."+"<br>" + "<b>" ;
-                document.getElementsByClassName("grid-form")[0].setAttribute("rota", "m2"); 
+                + "<span style='color:#DAA521; font-weight:bolder';>"+a.g +"</span>" + " gotas em seu óleo essencial."+"<br>" + "<b>" ;
+                 document.getElementsByClassName("grid-form")[0].setAttribute("rota", "m2");
+                b(op("buttons"), z.s, "margin-top:-10px");
+                
                 u(op("btncalc"), c.n);
                 ///a.c.addEventListener("click", novoCalculo());
                 op("msg2").innerHTML=a.h;
@@ -203,7 +225,17 @@ function calculaGotas(){
                 a.y.innerHTML = a.g;          
                 }
    };
-   
+
+   /*
+   document.querySelector("telefone_contato").addEventListener("keypress", (event) => {
+
+        if(event.keyCode ==13){
+                alert("teste");
+        }
+
+   },);*/
+
+ 
 function op(b){
     if(b){
        return document.getElementById(b);
@@ -282,7 +314,9 @@ function inserirContato(event){
                 if(errors["nome"]){
                     var s = op("nome_error");
                     s.textContent = errors.nome;
-                    s.style.opacity = "1";
+                    setTimeout(function(){
+                        s.style.animationName = "error-animacao-abrir";
+                     },1500)
                 }
                 if(errors["email"]){
                     var x = op("email_error");

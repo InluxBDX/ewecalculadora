@@ -276,6 +276,10 @@ input:focus ~ label, input:valid ~ label {
   }
   
 
+  @keyframes error-animacao-abrir {
+    from {display: none; opacity: 0}
+    to {display: block; opacity: 1}
+    }
   
   @keyframes modal-animacao-abrir {
     from {display: block; opacity: 0}
@@ -358,7 +362,7 @@ top: 100px;
 .drop:after{
   display:block; 
   content:"";
-  background:#EEDD82;
+  background:#DAA521;
   width:160px;
   height:160px;
   margin-left: auto;  
@@ -536,6 +540,27 @@ input:focus ~ .highlight {
 }
 
 @media (max-width: 992px) {
+
+
+   #social{
+     margin-top:0px;
+   }
+
+   .gota-container{
+      top:130px;
+      font-size:55px;
+
+   }
+
+    #water-drop{
+      top: -20px;
+      position: relative;
+
+    }
+
+    #buttons{
+      
+    }
 
   #texto{
     width: 200px;

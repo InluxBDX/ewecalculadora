@@ -59,10 +59,10 @@
 			
 				<input type="hidden" name="salva_contato">
 		</form>
-		<div id="msg" class="calc-style">
+		<div id="msg" style = "overflow: hidden" class="calc-style">
 	<div class="container_btn" style="margin-top: 0px;
-text-align: center;
-font-weight: bolder;margin-bottom: 20px;">
+				text-align: center;
+				font-weight: bolder;margin-bottom: 20px;">
  
 		<span>1ml=25 gotas</span>
  
