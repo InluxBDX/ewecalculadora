@@ -11,6 +11,7 @@ const abreCalculadora = (e) => {
           u(op("msg"), c.f);
           u(op("btncalc"), c.b);
           op("msg").style.flexDirection = "column";
+          window['num1'].focus();
           op("num1").value=''
           op("btn_enviar").style.display = "none";
           op("num2").value=''; 
@@ -27,8 +28,7 @@ const abreCalculadora = (e) => {
                     if(event.keyCode==13){                     
                         if(navigator.appCodeName == "Mozilla"){                        
                             window['btncalc'].focus()
-                            window['btncalc'].click();                                
-                            
+                            window['btncalc'].click();                             
                         }else{
                             window['btncalc'].click();
                         }
@@ -149,12 +149,14 @@ const z = {i:"id", c:"class", t:"type", v:"value", s:"style", j:"onclick"};
 
 const yr = () => {   
     u(op("btncalc"), c.b);
+   
     op("water-drop").style.display = "none";
     op("reset").style.display = "none";         
     op("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial." ;               
     op("contato-form").style.display = "none";
     op("msg").style.display = "flex";
     op("msg").style.flexDirection = "column";
+    window['num1'].focus();
     op("num1").value='';
     op("num2").value='';
 };
@@ -210,7 +212,7 @@ function calculaGotas(){
                 if(op("reset")){
                     op("reset").style.display = "block";   
                 }
-                const _color  = 
+               
 
                 b(a.b,z.s, "position: relative;top: 50px;");
                 a.h = "<b>"+"Para os valores especificados, você deverá diluir "
