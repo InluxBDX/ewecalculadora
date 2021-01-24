@@ -61,44 +61,40 @@
 				<input type="hidden" name="salva_contato">
 		</form>
 		<div id="msg" style = "overflow: hidden" class="calc-style">
-	<div class="container_btn" style="margin-top: 0px;
-				text-align: center;
-				font-weight: bolder;margin-bottom: 20px;">
- 
-		<span>Padrão: 1ml=25 gotas</span>
-		<div style="display:flex;flex-direction:row">
-		<div class="group" id="gota_padrao" style="width: 150px;display: flex;flex-direction: column;align-items: center;">      
-				<input style="width:100px" id="padrao" name="padrao" type="radio" value=""  >
-				
-				<!-- Verificar forma de melhorar esse efeito 
-				<span class="highlight"></span> -->
-				 
-				<span>Padrão</span>
-				
-				
-		</div>	
+			<div class="container_btn" style="margin-top: 0px;text-align: center;font-weight: bolder;">
+					<span id="padrao_msg" >Padrão: 1ml=25 gotas</span>
+			<div style="display:flex;flex-direction:row">
+					<div class="group" id="gota_padrao" style="width: 150px;display: flex;flex-direction: column;align-items: center;">      
+							<input style="width:100px" id="padrao" name="padrao" type="radio" value=""  >
+							<span>Padrão</span>			
+					</div>	
 		
 
 		<div class="group" style="width: 150px;display: flex;flex-direction: column;align-items: center;">  
 			<div style="display:flex;flex-direction:column">
 				<input style="width:100px" id="gota_ml" name="gota_ml" type="radio" value="" >
-				
 						<span>Personalizar</span>
-				
-				</div>
+			</div>
 		</div>	
 		</div>
-		<div class="group" id="gota" style="display:none">      
+		<div style="margin-bottom:20px">
+				<span id="qtd_gotas"></span>    
+		</div>
+					
+		
+ 
+		</div>
+		<div class="group" id="gota" style="display:none">  
+			
 				<input  name="gota" id="gota_campo" type="number" hidden value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')"  >
 				
 				<!-- Verificar forma de melhorar esse efeito 
 				<span class="highlight"></span> -->
 				<span class="bar"></span>
-				<label>Quantidade de Gotas</label>
-				<span style="display:none" class="error_message" id="gota_error"></span> 
 				
-		</div>		
- 
+				<label>Quantidade de Gotas</label>
+				
+				<span style="display:none" class="error_message" id="gota_error"></span> 				
 		</div>
 		<div class="group">      
 				<input id="num1" name="ml_value" type="number" value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')"  >
@@ -109,7 +105,8 @@
 				<label>Quantidade em ML</label>
 				<span style="display:none" class="error_message" id="ml_error"></span>
 				
-		</div>				
+		</div>	
+							
 		<div class="group">      
 				<input id="num2" name="perc_value" value="" type="number" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
 				<!-- Verificar forma de melhorar esse efeito 
@@ -119,8 +116,7 @@
 				<span style="display:none" class="error_message" id="perc_error"></span>
 					
 		</div>
-		<div class="container_btn" style="margin-top: -15px;">
-			
+		<div class="container_btn" style="margin-top: -15px;">			
 		</div>
 </div>
 
@@ -189,6 +185,8 @@ op("gota_ml").addEventListener('click', () =>{
 
 if(op("gota").style.display =="none" && op("gota_ml").checked==true){
 	op("gota").style.display = "block";
+	op("padrao_msg").style.display = "none";
+	op("qtd_gotas").innerHTML = "Digite a quantidade gotas por ml";
 	window['gota_campo'].focus();
 } 
 op("padrao").checked = false;
@@ -198,7 +196,9 @@ op("padrao").checked = false;
 op("gota_padrao").addEventListener('click', () =>{
 
 if(op("gota").style.display =="block"){
-	op("gota").style.display = "none"
+	op("gota").style.display = "none";
+	op("padrao_msg").style.display = "block";
+	op("qtd_gotas").innerHTML = "";
 } else{
 
 	op("gota").style.display = "bolock";

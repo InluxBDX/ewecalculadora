@@ -154,6 +154,13 @@ function b(p,b,o){
 const a = {r:n("div"),b:n("div"),c:n("input"),d:"u+",g:"u+",y:n("span"),h:"u+"};
 const z = {i:"id", c:"class", t:"type", v:"value", s:"style", j:"onclick"};
 
+window.onload = function(){
+    op("padrao").checked = true;  
+    op("gota_ml").checked = false;
+
+
+}
+
 const yr = () => {   
     u(op("btncalc"), c.b); 
     op("padrao").checked = true;  
@@ -178,8 +185,9 @@ function calculaGotas(){
       i.ml= op("num1");
       i.perc = op("num2");            
 
-      if(op("gota_ml").checked){
-       
+    
+
+      if(op("gota_ml").checked){       
           i.gota = op("gota_campo").value;
       }else if(op("padrao").checked){
             i.gota = 25;
