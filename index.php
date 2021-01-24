@@ -27,7 +27,8 @@
 
 </div>
 
-
+<main>
+<section>
 <div class="grid-form" rota="m0" style="display:flex; flex-direction: column;">
 
 <div id="water-drop" class="drop" style="display:none; grid-area: form;padding: 20px;margin:7px;">
@@ -36,25 +37,25 @@
 
 	<form id="contato-form" class="grid-form" name="contato_form" method="POST">
 			<div id="form_1" class="group">      
-				<input name="nome_contato" type="text" oninput="this.value = this.value.replace(/\b[^ A-Z.]/, '')"required>
-				<span class="highlight"></span>
+				<input id="nome" name="nome_contato" type="text" oninput="this.value = this.value.replace(/\b[^ A-Z.]/, '')"required>
+				<!-- Verificar forma de melhorar esse efeito 
+				<span class="highlight"></span> -->
 				<span class="bar"></span>
-				<label>Nome</label>				
-				<span style="opacity:0" class="error_message" id="nome_error"></span>
-			</div>				
+				<label>Nome</label>	
+				<div style="visibility:hidden" class="error_message" id="nome_error"></div>
+			</div>					
+			
 			<div id="form_2" class="group">      
-				<input id="email" name="email_contato" type="text" required>
-					<span class="highlight"></span>
+				<input id="email" name="email_contato" type="text" required>				 
 					<span class="bar"></span>
-					<label>Email</label>
-					<span style="display:none" class="error_message" id="email_error"></span>
+					<label>E-mail</label>					
+					<div style="visibility:hidden" class="error_message" id="email_error"></div>
 			</div>					
 			<div id="form_3"class="group">      
-				<input name="telefone_contato" type="text"  oninput="this.value = this.value.replace(/[^-0-9.]/g, '')" required>
-				<span class="highlight"></span>
+				<input id="telefone" name="telefone_contato" type="text"  oninput="this.value = this.value.replace(/[^-0-9.]/g, '')" required>				
 				<span class="bar"></span>
 				<label>Telefone</label>
-				<span style="display:none"   class="error_message" id="telefone_error"></span>
+				<div style="visibility:hidden" class="error_message" id="telefone_error"></div>
 			</div>
 			
 				<input type="hidden" name="salva_contato">
@@ -64,12 +65,46 @@
 				text-align: center;
 				font-weight: bolder;margin-bottom: 20px;">
  
-		<span>1ml=25 gotas</span>
+		<span>Padrão: 1ml=25 gotas</span>
+		<div style="display:flex;flex-direction:row">
+		<div class="group" id="gota_padrao" style="width: 150px;display: flex;flex-direction: column;align-items: center;">      
+				<input style="width:100px" id="padrao" name="padrao" type="radio" value=""  >
+				
+				<!-- Verificar forma de melhorar esse efeito 
+				<span class="highlight"></span> -->
+				 
+				<span>Padrão</span>
+				
+				
+		</div>	
+		
+
+		<div class="group" style="width: 150px;display: flex;flex-direction: column;align-items: center;">  
+			<div style="display:flex;flex-direction:column">
+				<input style="width:100px" id="gota_ml" name="gota_ml" type="radio" value="" >
+				
+						<span>Personalizar</span>
+				
+				</div>
+		</div>	
+		</div>
+		<div class="group" id="gota" style="display:none">      
+				<input  name="gota" id="gota_campo" type="number" hidden value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')"  >
+				
+				<!-- Verificar forma de melhorar esse efeito 
+				<span class="highlight"></span> -->
+				<span class="bar"></span>
+				<label>Quantidade de Gotas</label>
+				<span style="display:none" class="error_message" id="gota_error"></span> 
+				
+		</div>		
  
 		</div>
 		<div class="group">      
 				<input id="num1" name="ml_value" type="number" value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')"  >
-				<span class="highlight"></span>
+				
+				<!-- Verificar forma de melhorar esse efeito 
+				<span class="highlight"></span> -->
 				<span class="bar"></span>
 				<label>Quantidade em ML</label>
 				<span style="display:none" class="error_message" id="ml_error"></span>
@@ -77,7 +112,8 @@
 		</div>				
 		<div class="group">      
 				<input id="num2" name="perc_value" value="" type="number" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
-				<span class="highlight"></span>
+				<!-- Verificar forma de melhorar esse efeito 
+				<span class="highlight"></span> -->
 				<span class="bar"></span>
 				<label>Porcentagem de diluição</label>
 				<span style="display:none" class="error_message" id="perc_error"></span>
@@ -141,9 +177,40 @@ C393.849,321.004,393.849,330.511,387.985,336.375z"/>
 
 </div>
 </div>
-			
+</section>
+</main>	
 </div>
 	
+<script>
+
+op("padrao").checked = true;
+
+op("gota_ml").addEventListener('click', () =>{
+
+if(op("gota").style.display =="none" && op("gota_ml").checked==true){
+	op("gota").style.display = "block";
+	window['gota_campo'].focus();
+} 
+op("padrao").checked = false;
+
+})
+
+op("gota_padrao").addEventListener('click', () =>{
+
+if(op("gota").style.display =="block"){
+	op("gota").style.display = "none"
+} else{
+
+	op("gota").style.display = "bolock";
+}
+op("gota_ml").checked = false;
+
+
+
+
+})
+</script>
+
 </body>
 
 </html>

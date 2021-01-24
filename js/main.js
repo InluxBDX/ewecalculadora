@@ -18,6 +18,15 @@ const abreCalculadora = (e) => {
           document.querySelector(".container_btn").style.marginTop = "0px"; 
           document.querySelector(".grid-form").setAttribute("rota", "m1"); 
           op("btncalc").style.marginTop ="0px";
+
+          op("gota_campo").addEventListener("keypress", (event) => {
+        
+            if(event.keyCode==13){
+                window['num1'].focus();
+                }
+        },);      
+
+
           op("num1").addEventListener("keypress", (event) => {
         
                     if(event.keyCode==13){
@@ -33,17 +42,15 @@ const abreCalculadora = (e) => {
                             window['btncalc'].click();
                         }
                           
-                  }
-                        
-                }, );
-
-        
+                  }                        
+                }, );        
     }
 };
 
 function veriEmail(){
     event.preventDefault();      
     const q = [
+        op("email_error").style.visibility = "hidden",
         u(op("email_error"),c.n),
         u(op("form_1"),c.n),
         u(op("form_3"),c.n),
@@ -59,7 +66,6 @@ function u(b,c){
     }
 }
 
-
 function habilitaFormCad(event){
     event.preventDefault();
     u(op("form_1"), c.b);
@@ -69,11 +75,11 @@ function habilitaFormCad(event){
 }
 
 function consultaEmail(event){
-        var r = op("email");      
+        const r = op("email");      
         event.preventDefault();   
         //Retirar após debug
         console.log(encodeURIComponent(r.name) + "=" + encodeURIComponent(r.value));
-        var y = new XMLHttpRequest();        
+        const y = new XMLHttpRequest();        
         y.open("POST", "src/contato_ctrl.php", true);       
         y.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  
         y.send(encodeURIComponent(r.name) + "=" + encodeURIComponent(r.value)+"&" + "verifica_email="+"");    
@@ -88,8 +94,10 @@ function consultaEmail(event){
         
                 if(errors["email"]){
                     var x = op("email_error");
-                    x.textContent = errors.email;
+                    x.innerHTML = errors.email;
                     x.style.display = "block";
+                    x.style.visibility = "visible";
+                    op("email").focus();                    
                  }
 
                 if(errors["usuario"]){
@@ -131,9 +139,10 @@ function consultaEmail(event){
     }
 
 const n = (p) => {
-        if(p){
-          return document.createElement(p);
-        };
+
+    if(p){
+        return document.createElement(p);
+    }
 }
 
 function b(p,b,o){
@@ -145,11 +154,12 @@ function b(p,b,o){
 const a = {r:n("div"),b:n("div"),c:n("input"),d:"u+",g:"u+",y:n("span"),h:"u+"};
 const z = {i:"id", c:"class", t:"type", v:"value", s:"style", j:"onclick"};
 
-
-
 const yr = () => {   
-    u(op("btncalc"), c.b);
-   
+    u(op("btncalc"), c.b); 
+    op("padrao").checked = true;  
+    op("gota_ml").checked = false;  
+    op("gota_campo").value = '';
+    op("gota").style.display = "none"
     op("water-drop").style.display = "none";
     op("reset").style.display = "none";         
     op("msg2").innerHTML ="Digite a quantidade em ML e a porcentagem de diluição do seu óleo essencial." ;               
@@ -159,14 +169,22 @@ const yr = () => {
     window['num1'].focus();
     op("num1").value='';
     op("num2").value='';
+    
 };
 
 function calculaGotas(){ 
-      const i = {ml:null, perc:null};
+      const i = {ml:null, perc:null, gota: null};
 
       i.ml= op("num1");
-      i.perc = op("num2");      
+      i.perc = op("num2");            
 
+      if(op("gota_ml").checked){
+       
+          i.gota = op("gota_campo").value;
+      }else if(op("padrao").checked){
+            i.gota = 25;
+      }
+  
       if(parseFloat(i.ml.value)==0 || i.ml.value==""){
             const x = op("ml_error");
             x.textContent = "Valor deve ser maior que 0!"
@@ -181,10 +199,19 @@ function calculaGotas(){
        }else{
         op("perc_error").style.display="none";
        }
+       if(parseFloat(i.gota)==0 || i.gota==""){
+        const x = op("gota_error");
+        x.textContent = "Valor deve ser maior que 0!"
+                x.style.display = "block";
+        }else{
+            op("gota_error").style.display="none";
+        }
 
-       if(parseFloat( i.ml.value)>0 && parseFloat(i.perc.value)>0){
+       if(parseFloat( i.ml.value)>0 && parseFloat(i.perc.value)>0 && parseFloat(i.gota)>0){
                 a.d = parseFloat(i.perc.value/100);
-                a.g = Math.round(parseFloat((parseFloat(i.ml.value)*a.d*0.25)*100));
+                a.h = parseFloat(i.gota/100);
+                console.log(a.h);
+                a.g = Math.round(parseFloat((parseFloat(i.ml.value)*a.d*a.h)*100));
 
                 op("msg").style.display = "none";
 
@@ -211,11 +238,10 @@ function calculaGotas(){
 
                 if(op("reset")){
                     op("reset").style.display = "block";   
-                }
-               
+                }               
 
                 b(a.b,z.s, "position: relative;top: 50px;");
-                a.h = "<b>"+"Para os valores especificados, você deverá diluir "
+                a.h = "<b>"+"Para uma diluição dos valores especificados, você deverá diluir "
                 + "<span style='color:#DAA521; font-weight:bolder';>"+a.g +"</span>" + " gotas em seu óleo essencial."+"<br>" + "<b>" ;
                  document.getElementsByClassName("grid-form")[0].setAttribute("rota", "m2");
                 b(op("buttons"), z.s, "margin-top:-10px");
@@ -242,7 +268,7 @@ function op(b){
     if(b){
        return document.getElementById(b);
     }
-    return undefined;
+    
 }
   
 /*!
@@ -296,12 +322,12 @@ function validaCampos(form){
 
 }*/
 function inserirContato(event){
-    var form2 = op("contato-form");     
+        const form2 = op("contato-form");     
         event.preventDefault();  
         var s = serialize(form2);
         //Retirar após debug
         console.log(s);
-        var y = new XMLHttpRequest();        
+        const y = new XMLHttpRequest();        
         y.open("POST", "src/contato_ctrl.php", true);       
         y.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  
         y.send(s);    
@@ -313,22 +339,35 @@ function inserirContato(event){
                 console.log(errors);              
                 abreCalculadora(errors);               
                 //Verificar uma forma melhor de fazer essa validação utilizando O JSON
+                
                 if(errors["nome"]){
                     var s = op("nome_error");
-                    s.textContent = errors.nome;
-                    s.style.opacity = "1";
+                    s.innerHTML = errors.nome;
+                    s.style.visibility = "visible";
+                    op("nome").focus();
+                }else{
+                    op("nome_error").style.display = "none"
                 }
-                if(errors["email"]){
-                    var x = op("email_error");
-                    x.textContent = errors.email;
-                    x.style.display = "block";
-                }
+
                 if(errors["telefone"]){
                     var u = op("telefone_error");
-                    u.textContent = errors.telefone;
-                    u.style.display = "block";
+                    u.innerHTML  = errors.telefone;
+                    u.style.visibility = "visible"; 
+                                
+                }else{
+                    op("telefone_error").style.display = "none"
                 }
-                if(errors["usuario"]){
+          
+                if(errors["email"]){
+                    var x = op("email_error");
+                    x.innerHTML  = errors.email;
+                    x.style.visibility = "visible";
+                                      
+                }else{
+                    op("email_error").style.display = "none"
+                }  
+
+                 if(errors["usuario"]){
                     var modal = document.createElement("div");
                     var modal_content = document.createElement("div");
                     var close = document.createElement("span");
@@ -362,17 +401,14 @@ function inserirContato(event){
                         op("num1").value=''
                         op("num2").value='';
 
-                    },1500);                    
+                        },1500);                    
                     }
-                
+           
         }   
     //form2.reset();   
     }
-    op("nome_error").style.opacity = "0";
-    op("email_error").style.display = "none";
-    op("telefone_error").style.display = "none";
-}
 
+}
 
 
 function loginPainel(event){
@@ -397,17 +433,16 @@ function loginPainel(event){
                 var errors;
                 errors = JSON.parse(this.responseText);
                 console.log(errors);   
-            if(errors["nome_usuario"]){
-                    var s = op("usuario_error");
-                    s.textContent = errors.nome_usuario;
-                    s.style.opacity = "1";
-                }
-            if(errors["senha"]){
-                    var x = op("senha_error");
-                    x.textContent = errors.senha;
-                    x.style.display = "block";
-                }
-
+                if(errors["nome_usuario"]){
+                        var s = op("usuario_error");
+                        s.textContent = errors.nome_usuario;
+                        s.style.opacity = "1";
+                    }
+                if(errors["senha"]){
+                        var x = op("senha_error");
+                        x.textContent = errors.senha;
+                        x.style.display = "block";
+                    }
              }
             
      }
