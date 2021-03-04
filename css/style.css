@@ -2,6 +2,15 @@
   box-sizing:border-box; 
 
 
+
+}
+
+a:visited, a:link, a:hover, a:active{
+
+    color: #11662F;
+    text-decoration: none;
+    font-weight: bolder;
+
 }
 body{
   
@@ -310,7 +319,7 @@ input:focus ~ label, input:valid ~ label {
 #texto{
     grid-area: texto;
     text-align: center;
-    width: 400px;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
     color:#052002d0;

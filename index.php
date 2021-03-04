@@ -22,7 +22,7 @@
     </div>
 <div id="texto">
 <p id="msg2">Digite seus dados abaixo, para que possamos entrar em contato e lhe fornecer mais informações sobre nossos serviços.
-	Se você já possui um email cadastrado basta <a href="" onclick="veriEmail()">clicar aqui</a> para digitar seu email.</p>
+	Se você já possui um email cadastrado basta <a id="email" href="" onclick="veriEmail()">clicar aqui</a> para digitar seu email.</p>
 <p> 
 
 </div>
@@ -42,7 +42,9 @@
 				<span class="highlight"></span> -->
 				<span class="bar"></span>
 				<label>Nome</label>	
-				<div style="visibility:hidden" class="error_message" id="nome_error"></div>
+				<div style="visibility:hidden" class="error_message" id="nome_error">
+							
+			</div>
 			</div>					
 			
 			<div id="form_2" class="group">      
@@ -88,8 +90,7 @@
 			
 				<input  name="gota" id="gota_campo" type="number" hidden value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')"  >
 				
-				<!-- Verificar forma de melhorar esse efeito 
-				<span class="highlight"></span> -->
+			
 				<span class="bar"></span>
 				
 				<label>Quantidade de Gotas</label>
@@ -99,11 +100,12 @@
 		<div class="group">      
 				<input id="num1" name="ml_value" type="number" value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')"  >
 				
-				<!-- Verificar forma de melhorar esse efeito 
-				<span class="highlight"></span> -->
+				
 				<span class="bar"></span>
 				<label>Quantidade em ML</label>
-				<span style="display:none" class="error_message" id="ml_error"></span>
+				<span style="display:none" class="error_message" id="ml_error">
+				
+			</span>
 				
 		</div>	
 							
@@ -113,6 +115,7 @@
 				<span class="highlight"></span> -->
 				<span class="bar"></span>
 				<label>Porcentagem de diluição</label>
+				<span></span>
 				<span style="display:none" class="error_message" id="perc_error"></span>
 					
 		</div>
