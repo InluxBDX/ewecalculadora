@@ -15,18 +15,16 @@
 
 <div id="grid" class="grid-container">
 <div id="logo"> 
-		<a href="index.php"><img src="images/logo.jpeg" alt=""></a>		
+		<a href="calculadora.php"><img src="images/logo.jpeg" alt=""></a>		
 		<div id="nome_empresa">
 			<p>Ewé Terapias</p>
 	</div>	
     </div>
 <div id="texto">
-<p id="msg2">Digite seus dados abaixo, para que possamos entrar em contato e lhe fornecer mais informações sobre nossos serviços.
-	Se você já possui um email cadastrado basta <a id="email" href="" onclick="veriEmail()">clicar aqui</a> para digitar seu email.</p>
+<p id="msg2">Digite seus dados abaixo. <br> Se você já possui um email cadastrado<br> basta <a href="" onclick="veriEmail()">clicar aqui</a>.</p>
 <p> 
 
 </div>
-
 <main>
 <section>
 <div class="grid-form" rota="m0" style="display:flex; flex-direction: column;">
@@ -37,14 +35,10 @@
 
 	<form id="contato-form" class="grid-form" name="contato_form" method="POST">
 			<div id="form_1" class="group">      
-				<input id="nome" name="nome_contato" type="text" oninput="this.value = this.value.replace(/\b[^ A-Z.]/, '')"required>
-				<!-- Verificar forma de melhorar esse efeito 
-				<span class="highlight"></span> -->
-				<span class="bar"></span>
+				<input id="nome" name="nome_contato" type="text" required>
+					<span class="bar"></span>
 				<label>Nome</label>	
-				<div style="visibility:hidden" class="error_message" id="nome_error">
-							
-			</div>
+				<div style="visibility:hidden" class="error_message" id="nome_error"></div>
 			</div>					
 			
 			<div id="form_2" class="group">      
@@ -90,7 +84,7 @@
 			
 				<input  name="gota" id="gota_campo" type="number" hidden value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')"  >
 				
-			
+	
 				<span class="bar"></span>
 				
 				<label>Quantidade de Gotas</label>
@@ -99,23 +93,18 @@
 		</div>
 		<div class="group">      
 				<input id="num1" name="ml_value" type="number" value="" required oninput="this.value = this.value.replace(/[^0-9.]/g, '')"  >
-				
-				
+			
 				<span class="bar"></span>
 				<label>Quantidade em ML</label>
-				<span style="display:none" class="error_message" id="ml_error">
-				
-			</span>
+				<span style="display:none" class="error_message" id="ml_error"></span>
 				
 		</div>	
 							
 		<div class="group">      
 				<input id="num2" name="perc_value" value="" type="number" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
-				<!-- Verificar forma de melhorar esse efeito 
-				<span class="highlight"></span> -->
+	
 				<span class="bar"></span>
 				<label>Porcentagem de diluição</label>
-				<span></span>
 				<span style="display:none" class="error_message" id="perc_error"></span>
 					
 		</div>
@@ -217,6 +206,5 @@ op("gota_ml").checked = false;
 </body>
 
 </html>
-
 
 
