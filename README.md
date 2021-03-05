@@ -4,7 +4,7 @@
   Calculadora de gotas de oléo essencial.\
   Projeto desenvolvido em parceria com a empresa Ewé Terapias.\ 
   
-  Links.\
+ ## Links
   
  [Ewé Terapias](https://www.instagram.com/eweterapiasintegrativas/)
   
